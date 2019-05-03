@@ -25,6 +25,8 @@ func Factory(tp int) Generator {
 		return MysqlOptimism{}
 	} else if tp == 5 {
 		return MysqlPessimism{}
+	} else if tp == 6 {
+		return MysqlPessimismStep{}
 	}
 	return MemAtomic{}
 }

@@ -27,16 +27,17 @@ func init() {
 	// db.LogMode(true)
 	db.AutoMigrate(&MyID{})
 
-	ins1 := &MyID{
+	ins := &MyID{
 		ID:   1,
 		MyID: 0,
 	}
-	db.Save(ins1)
+	db.Save(ins)
 
-	ins2 := &MyID{
-		ID:   2,
-		MyID: 0,
-	}
-	db.Save(ins2)
+	ins.ID = 2
+	db.Save(ins)
+
+	ins.ID = 3
+	db.Save(ins)
+
 	MyDB = db
 }

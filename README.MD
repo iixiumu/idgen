@@ -213,7 +213,60 @@
     98%    361
     99%    397
     100%    535 (longest request)
+#   mysql pessimism step
+    ab -n 100000 -c 100 -k 'http://127.0.0.1:8052/getid?type=6'
 
+    Benchmarking 127.0.0.1 (be patient)
+    Completed 10000 requests
+    Completed 20000 requests
+    Completed 30000 requests
+    Completed 40000 requests
+    Completed 50000 requests
+    Completed 60000 requests
+    Completed 70000 requests
+    Completed 80000 requests
+    Completed 90000 requests
+    Completed 100000 requests
+    Finished 100000 requests
+
+
+    Server Software:
+    Server Hostname:        127.0.0.1
+    Server Port:            8052
+
+    Document Path:          /getid?type=6
+    Document Length:        8 bytes
+
+    Concurrency Level:      100
+    Time taken for tests:   29.523 seconds
+    Complete requests:      100000
+    Failed requests:        99991
+    (Connect: 0, Receive: 0, Length: 99991, Exceptions: 0)
+    Keep-Alive requests:    100000
+    Total transferred:      15888796 bytes
+    HTML transferred:       1188895 bytes
+    Requests per second:    3387.15 [#/sec] (mean)
+    Time per request:       29.523 [ms] (mean)
+    Time per request:       0.295 [ms] (mean, across all concurrent requests)
+    Transfer rate:          525.56 [Kbytes/sec] received
+
+    Connection Times (ms)
+                min  mean[+/-sd] median   max
+    Connect:        0    0   0.2      0       9
+    Processing:     0   29  12.5     26     215
+    Waiting:        0   29  12.5     26     215
+    Total:          0   29  12.5     26     215
+
+    Percentage of the requests served within a certain time (ms)
+    50%     26
+    66%     28
+    75%     29
+    80%     31
+    90%     36
+    95%     52
+    98%     69
+    99%     83
+    100%    215 (longest request)
 #   issue
 1. ab -k Use HTTP KeepAlive feature
 2. redis pool MaxIdle > 100
