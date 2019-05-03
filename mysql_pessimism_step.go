@@ -5,7 +5,7 @@ import "sync"
 type MysqlPessimismStep struct {
 }
 
-const STEP = 10
+const STEP = 100
 
 var startID, endID uint64
 var lock sync.Mutex

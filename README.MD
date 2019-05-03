@@ -212,7 +212,44 @@
     95%    311
     98%    361
     99%    397
-    100%    535 (longest request)
+    100%    535 (longest request)   <!-- step=100 -->
+    Server Software:
+    Server Hostname:        127.0.0.1
+    Server Port:            8052
+
+    Document Path:          /getid?type=6
+    Document Length:        8 bytes
+
+    Concurrency Level:      100
+    Time taken for tests:   9.742 seconds
+    Complete requests:      100000
+    Failed requests:        99991
+    (Connect: 0, Receive: 0, Length: 99991, Exceptions: 0)
+    Keep-Alive requests:    100000
+    Total transferred:      15888796 bytes
+    HTML transferred:       1188895 bytes
+    Requests per second:    10264.46 [#/sec] (mean)
+    Time per request:       9.742 [ms] (mean)
+    Time per request:       0.097 [ms] (mean, across all concurrent requests)
+    Transfer rate:          1592.67 [Kbytes/sec] received
+
+    Connection Times (ms)
+                min  mean[+/-sd] median   max
+    Connect:        0    0   0.3      0      12
+    Processing:     0   10   6.2      9     159
+    Waiting:        0   10   6.2      9     159
+    Total:          0   10   6.2      9     159
+
+    Percentage of the requests served within a certain time (ms)
+    50%      9
+    66%     10
+    75%     11
+    80%     11
+    90%     16
+    95%     19
+    98%     26
+    99%     30
+    100%    159 (longest request)
 #   mysql pessimism step
     ab -n 100000 -c 100 -k 'http://127.0.0.1:8052/getid?type=6'
 
@@ -229,7 +266,7 @@
     Completed 100000 requests
     Finished 100000 requests
 
-
+    <!-- step=10 -->
     Server Software:
     Server Hostname:        127.0.0.1
     Server Port:            8052
@@ -267,6 +304,45 @@
     98%     69
     99%     83
     100%    215 (longest request)
+
+    <!-- step=100 -->
+    Server Software:
+    Server Hostname:        127.0.0.1
+    Server Port:            8052
+
+    Document Path:          /getid?type=6
+    Document Length:        8 bytes
+
+    Concurrency Level:      100
+    Time taken for tests:   9.742 seconds
+    Complete requests:      100000
+    Failed requests:        99991
+    (Connect: 0, Receive: 0, Length: 99991, Exceptions: 0)
+    Keep-Alive requests:    100000
+    Total transferred:      15888796 bytes
+    HTML transferred:       1188895 bytes
+    Requests per second:    10264.46 [#/sec] (mean)
+    Time per request:       9.742 [ms] (mean)
+    Time per request:       0.097 [ms] (mean, across all concurrent requests)
+    Transfer rate:          1592.67 [Kbytes/sec] received
+
+    Connection Times (ms)
+                min  mean[+/-sd] median   max
+    Connect:        0    0   0.3      0      12
+    Processing:     0   10   6.2      9     159
+    Waiting:        0   10   6.2      9     159
+    Total:          0   10   6.2      9     159
+
+    Percentage of the requests served within a certain time (ms)
+    50%      9
+    66%     10
+    75%     11
+    80%     11
+    90%     16
+    95%     19
+    98%     26
+    99%     30
+    100%    159 (longest request)
 #   issue
 1. ab -k Use HTTP KeepAlive feature
 2. redis pool MaxIdle > 100
