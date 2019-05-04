@@ -1,3 +1,4 @@
+    ID生成
 #   memory atomic
     ab -n 100000 -c 100 -k 'http://127.0.0.1:8052/getid?type=1'
 
@@ -346,3 +347,7 @@
 #   issue
 1. ab -k Use HTTP KeepAlive feature
 2. redis pool MaxIdle > 100
+
+#   ref
+    [分布式 ID 生成策略](https://mp.weixin.qq.com/s/h8dphDS4D36nWyhPCLC7ag)
+    [分布式ID生成器](https://mp.weixin.qq.com/s?__biz=MjM5ODYxMDA5OQ==&mid=2651960245&idx=1&sn=5cef3d8ca6a3e6e94f61e0edaf985d11&chksm=bd2d06698a5a8f7fc89056af619b9b7e79b158bceb91bdeb776475bc686721e36fb925904a67&scene=21#wechat_redirect)
