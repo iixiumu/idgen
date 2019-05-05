@@ -347,6 +347,7 @@
 #   issue
 1. ab -k Use HTTP KeepAlive feature
 2. redis pool MaxIdle > 100
+3. mysql 8.0 mysql_native_password allowNativePasswords=true
 
 #   ref
     [分布式 ID 生成策略](https://mp.weixin.qq.com/s/h8dphDS4D36nWyhPCLC7ag)
