@@ -31,13 +31,11 @@ func init() {
 		ID:   1,
 		MyID: 0,
 	}
-	db.Save(ins)
 
-	ins.ID = 2
-	db.Save(ins)
-
-	ins.ID = 3
-	db.Save(ins)
+	for _, id := range []int{1, 2, 3, 4} {
+		ins.ID = uint64(id)
+		db.Save(ins)
+	}
 
 	MyDB = db
 }

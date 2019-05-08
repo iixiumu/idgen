@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"time"
 
 	"github.com/gomodule/redigo/redis"
@@ -23,7 +22,7 @@ type RedisIncr struct {
 
 func (RedisIncr) GenID() uint64 {
 	conn := RedisPool.Get()
-	fmt.Printf("%d %d\n", RedisPool.IdleCount(), RedisPool.ActiveCount())
+	// fmt.Printf("%d %d\n", RedisPool.IdleCount(), RedisPool.ActiveCount())
 	defer conn.Close()
 	id, _ := redis.Uint64(conn.Do("INCR", "id"))
 	return id

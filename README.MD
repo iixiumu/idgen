@@ -344,6 +344,139 @@
     98%     26
     99%     30
     100%    159 (longest request)
+#   mysql redis lock
+    ab -n 100000 -c 100 -k 'http://127.0.0.1:8052/getid?type=7'
+
+    <!-- 二进制无上限 超时 -->
+
+    Benchmarking 127.0.0.1 (be patient)
+    Completed 10000 requests
+    Completed 20000 requests
+    Completed 30000 requests
+    Completed 40000 requests
+    Completed 50000 requests
+    Completed 60000 requests
+    Completed 70000 requests
+    Completed 80000 requests
+    Completed 90000 requests
+    Completed 100000 requests
+    Finished 100000 requests
+
+
+    Server Software:
+    Server Hostname:        127.0.0.1
+    Server Port:            8052
+
+    Document Path:          /getid?type=7
+    Document Length:        8 bytes
+
+    Concurrency Level:      100
+    Time taken for tests:   311.087 seconds
+    Complete requests:      100000
+    Failed requests:        99991
+    (Connect: 0, Receive: 0, Length: 99991, Exceptions: 0)
+    Keep-Alive requests:    100000
+    Total transferred:      15888796 bytes
+    HTML transferred:       1188895 bytes
+    Requests per second:    321.45 [#/sec] (mean)
+    Time per request:       311.087 [ms] (mean)
+    Time per request:       3.111 [ms] (mean, across all concurrent requests)
+    Transfer rate:          49.88 [Kbytes/sec] received
+
+    <!-- <=1024 -->
+    Connection Times (ms)
+                min  mean[+/-sd] median   max
+    Connect:        0    0   0.3      0      11
+    Processing:     2  310 1769.4      3   40712
+    Waiting:        2  310 1769.4      3   40712
+    Total:          2  310 1769.4      3   40712
+
+    Percentage of the requests served within a certain time (ms)
+    50%      3
+    66%      3
+    75%      4
+    80%      4
+    90%     11
+    95%    684
+    98%   5582
+    99%   9285
+    100%  40712 (longest request)
+
+    <!-- <=128 -->
+    Connection Times (ms)
+                min  mean[+/-sd] median   max
+    Connect:        0    0   0.2      0      11
+    Processing:     2  342 751.7      5   10665
+    Waiting:        2  342 751.7      5   10665
+    Total:          2  342 751.7      5   10665
+
+    Percentage of the requests served within a certain time (ms)
+    50%      5
+    66%     48
+    75%    310
+    80%    521
+    90%   1197
+    95%   1901
+    98%   2836
+    99%   3569
+    100%  10665 (longest request)
+
+    <!-- <=64 -->
+    Connection Times (ms)
+                min  mean[+/-sd] median   max
+    Connect:        0    0   0.3      0      15
+    Processing:     2  357 591.0     74    7391
+    Waiting:        2  357 591.0     74    7391
+    Total:          2  357 591.0     74    7391
+
+    Percentage of the requests served within a certain time (ms)
+    50%     74
+    66%    302
+    75%    490
+    80%    626
+    90%   1075
+    95%   1543
+    98%   2198
+    99%   2736
+    100%   7391 (longest request)
+
+    <!-- <=32 -->
+    Connection Times (ms)
+                min  mean[+/-sd] median   max
+    Connect:        0    0   0.2      0      11
+    Processing:     2  312 402.7    173    5946
+    Waiting:        2  312 402.7    173    5946
+    Total:          2  312 402.7    173    5946
+
+    Percentage of the requests served within a certain time (ms)
+    50%    173
+    66%    320
+    75%    440
+    80%    531
+    90%    811
+    95%   1102
+    98%   1515
+    99%   1856
+    100%   5946 (longest request)
+
+    <!-- <=16 -->
+    Connection Times (ms)
+                min  mean[+/-sd] median   max
+    Connect:        0    0   0.3      0      12
+    Processing:     2  367 423.0    233    6880
+    Waiting:        2  367 423.0    233    6880
+    Total:          2  367 423.0    233    6880
+
+    Percentage of the requests served within a certain time (ms)
+    50%    233
+    66%    379
+    75%    500
+    80%    589
+    90%    875
+    95%   1179
+    98%   1617
+    99%   1997
+    100%   6880 (longest request)
 #   issue
 1. ab -k Use HTTP KeepAlive feature
 2. redis pool MaxIdle > 100

@@ -27,6 +27,8 @@ func Factory(tp int) Generator {
 		return MysqlPessimism{}
 	} else if tp == 6 {
 		return MysqlPessimismStep{}
+	} else if tp == 7 {
+		return MysqlRedisLock{}
 	}
 	return MemAtomic{}
 }
@@ -54,11 +56,11 @@ func genid(c *gin.Context) {
 }
 
 func main() {
-
 	go func() {
 		log.Println(http.ListenAndServe(":8053", nil))
 	}()
 
+	gin.SetMode(gin.ReleaseMode)
 	r := gin.Default()
 	r.GET("/getid", genid)
 	r.GET("/id", func(c *gin.Context) {
